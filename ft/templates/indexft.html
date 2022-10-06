@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div class="p-3 mb-2 bg-light text-dark">
     <h1><b><center>FAKULTAS ILMU SOSIAL DAN ILMU POLITIK</center></b></h1>
+</div>
+<div class="bg-success p-2 text-white bg-opacity-75">
 <center>
     <p><b>Fakultas Teknik (FT) Universitas Sultan Ageng Tirtayasa berlokasi di Cilegon. Keberadaan jurusan-jurusan yang ada di Universitas Sultan Ageng Tirtayasa merupakan respons Fakultas Teknik Universitas Sultan Ageng Tirtayasa terhadap dunia industri di Provinsi Banten. Untuk mendukung berjalannya kurikulum, masing-masing jurusan dilengkapi laboratorium. Laboratorium ini menjadi pendukung utama bagi mahasiswa untuk menyelesaikan perkuliahan sekaligus membantu para dosen menyelenggarakan penelitian-penelitiannya. FT Untirta berdiri di atas tanah seluas ±1,5 hektare dan dalam waktu dekat ini akan menambah luas wilayahnya menjadi 8 kilometer.[per kapan?] Penambahan ini dimaksudkan untuk merespon kebutuhan akan ruangan karena peningkatan mahasiswa Fakultas Teknik yang cukup signifikan setiap tahunnya. Untuk mewujudkan salah satu Tridarma Perguruan Tinggi, FT Untirta sejak bulan Agustus 1998 menyelenggarakan Program Beasiswa D-1 Operator Industri Kimia yang bekerja sama dengan Asosiasi Industri Kimia (AMC/CMA), Pemerintah Kota Cilegon, dan industri lainnya bagi putra daerah Banten. Program beasiswa yang juga dikenal dengan P3TIK (Program Pendidikan dan Pelatihan Teknisi Industri Kimia) ini telah berjalan selama 17 tahun (data Juli 2015). Hal ini merupakan kegiatan pengabdian masyarakat yang sering disebut sebagai CSR (corporate social responsibility) dan telah meluluskan sekitar 710 orang dengan jumlah alumni yang bekerja sekitar 90 persen di Banten, Jawa Timur, Jakarta, Singapura, dan Timur Tengah.[butuh rujukan] Selain itu, sebagai upaya menyiapkan SDA berkualitas pada bidang IT, Fakultas Teknik Untirta pada tahun ajaran 2005/2010 membuka program Ahli Madya Teknik Komputer dan Multimedia. Program ini berada di bawah naungan Jurusan Teknik Elektro Universitas Sultan Ageng Tirtayasa.</b></p>
     <p><b>Fakultas Teknik Universitas Sultan Ageng Tirtayasa terdiri dari program studi :</b></p>
@@ -14,5 +16,81 @@
     <p><b>6. Teknik Sipil</b></p>
     <p><b>7. Teknik Mesin</b></p>
 </center>
-    
+</div>
+<br>
+    <h2>Daftar Nama Dosen, Staff & Mahasiswa FT</h2>
+    <table class="table table-dark table-striped">
+        <tr>
+            <th>NIP</th>
+            <th>Nama</th>
+            <th>Tanggal Lahir</th>
+            <th>Foto</th>
+            <th>Email</th>
+            <th>Fakultas</th>
+            <th>Prodi</th>
+            <th>Alamat</th>
+        </tr>
+        {% for dosen in dataDosen %}
+        <tr>
+            <td>{{ dosen.nip }}</td>
+            <td>{{ dosen.nama }}</td>
+            <td>{{ dosen.tanggal_lahir }}</td>
+            <td><img src="{{ dosen.foto }}" alt="Foto" width="100px"></td>
+            <td>{{ dosen.email }}</td>
+            <td>{{ dosen.fakultas }}</td>
+            <td>{{ dosen.prodi }}</td>
+            <td>{{ dosen.alamat }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <h2>Daftar Nama Tenaga Pendidik FKIP</h2>
+    <table class="table table-success table-striped">
+        <tr>
+            <th>NIP</th>
+            <th>Nama</th>
+            <th>Tanggal Lahir</th>
+            <th>Foto</th>
+            <th>Email</th>
+            <th>Unit</th>
+            <th>Alamat</th>
+        </tr>
+        {% for tenagaPendidik in dataTenagaPendidik %}
+        <tr>
+            <td>{{ tenagaPendidik.nip }}</td>
+            <td>{{ tenagaPendidik.nama }}</td>
+            <td>{{ tenagaPendidik.tanggal_lahir }}</td>
+            <td><img src="{{ tengaPendidik.foto }}" alt="Foto" width="100px"></td>
+            <td>{{ tenagaPendidik.email }}</td>
+            <td>{{ tenagaPendidik.unit }}</td>
+            <td>{{ tenagaPendidik.alamat }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <h2>Daftar Nama Mahasiswa FKIP</h2>
+    <table class="table table-secondary table-striped">
+        <tr>
+            <th>NIM</th>
+            <th>Nama</th>
+            <th>Tanggal Lahir</th>
+            <th>Foto</th>
+            <th>Email</th>
+            <th>Fakultas</th>
+            <th>Prodi</th>
+            <th>Alamat</th>
+        </tr>
+        {% for mahasiswa in dataMahasiswa %}
+        <tr>
+            <td>{{ mahasiswa.nim }}</td>
+            <td>{{ mahasiswa.nama }}</td>
+            <td>{{ mahasiswa.tanggal_lahir }}</td>
+            <td><img src="{{ mahasiswa.foto }}" alt="Foto" width="100px"></td>
+            <td>{{ mahasiswa.email }}</td>
+            <td>{{ mahasiswa.fakultas }}</td>
+            <td>{{ mahasiswa.prodi }}</td>
+            <td>{{ mahasiswa.alamat }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
