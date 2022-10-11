@@ -1,0 +1,128 @@
+Table Dosen {
+  id_dosen int [pk]
+  Nip varchar
+  Nama varchar
+  Alamat varchar
+  Email varchar
+  Tangga_Lahir varchar
+  Foto varchar
+ }
+ 
+ Table Mahasiswa {
+  Nim int [pk]
+  id_mahasiswa varchar
+  Nama varchar
+  Alamat varchar
+  Email varchar
+  Tangga_Lahir varchar
+  Fakultas varchar
+  Prodi varchar
+  Foto varchar
+ }
+ 
+ Table Tenaga_Pendidik {
+  id_tendik int [pk]
+  Nama varchar
+  Alamat varchar
+  Email varchar
+  Tangga_Lahir varchar
+ }
+ 
+ Table Fakultas {
+  kode_fakultas int [pk]
+  Nama varchar
+  id_dosen varchar
+  id_mahasiswa varchar
+  id_tendik varchar
+  id_satpam varchar
+  kode_prodi varchar
+  kode_perpustakaan varchar
+ }
+ 
+ Table Prodi {
+  kode_prodi int [pk]
+  Nama_prodi varchar
+  Kode_Matakuliah varchar
+  kode_himpunan varchar
+ }
+ 
+ Table Mata_Kuliah{
+  Kode_Matakuliah int [pk]
+  Kode_Ruang varchar
+  Nama_Matakuliah varchar
+ }
+ 
+ Table Ruangan{
+  Kode_Ruang int [pk]
+  Nama_Ruang varchar
+ }
+ 
+ Table Himpunan   {
+  Kode int [pk]
+  Nama_Himpunan varchar
+  Fakultas varchar
+  Prodi varchar
+ }
+
+ Table Jadwal     {
+  Kode_jadwal int [pk]
+  Keterangan_Jadwal varchar
+  Waktu_Jadwal varchar
+  Kode_ruangan varchar
+  Nama_Jadwal varchar 
+ }
+ 
+ Table Perpustakaan   {
+  Kode_Perpustakaan int [pk]
+  Jenis_Buku varchar
+  Judul_Buku varchar
+  Nama_Petugas varchar
+  Nama_Peminjam varchar
+ }
+ 
+ Table Satpam     {
+  Kode_Satpam int [pk]
+  id_satpam varchar
+  Nama_Satpam varchar
+  Alamat_Satpam varchar
+  Tanggal_Lahir varchar
+ }
+ 
+ Table Kurikulum{
+  Kode_Kurikulum int [pk]
+  Tahun_Kurikulum varchar
+ }
+
+Ref: "Fakultas"."id_dosen" < "Dosen"."id_dosen"
+
+Ref: "Mahasiswa"."id_mahasiswa" < "Fakultas"."id_dosen"
+
+Ref: "Fakultas"."id_tendik" < "Tenaga_Pendidik"."id_tendik"
+
+Ref: "Fakultas"."id_satpam" < "Satpam"."id_satpam"
+
+Ref: "Fakultas"."kode_prodi" < "Prodi"."kode_prodi"
+
+Ref: "Fakultas"."kode_perpustakaan" < "Perpustakaan"."Kode_Perpustakaan"
+
+Ref: "Ruangan"."Kode_Ruang" < "Mata_Kuliah"."Kode_Ruang"
+
+Ref: "Prodi"."Kode_Matakuliah" < "Mata_Kuliah"."Kode_Matakuliah"
+
+Ref: "Kurikulum"."Kode_Kurikulum" < "Mata_Kuliah"."Kode_Matakuliah"
+
+Ref: "Perpustakaan"."Jenis_Buku" < "Fakultas"."kode_fakultas"
+
+Ref: "Perpustakaan"."Judul_Buku" < "Fakultas"."kode_perpustakaan"
+
+Ref: "Perpustakaan"."Nama_Petugas" < "Fakultas"."kode_perpustakaan"
+
+Ref: "Perpustakaan"."Nama_Peminjam" < "Fakultas"."kode_perpustakaan"
+
+Ref: "Prodi"."kode_himpunan" < "Himpunan"."Prodi"
+
+Ref: "Prodi"."kode_himpunan" < "Himpunan"."Fakultas"
+
+Ref: "Jadwal"."Kode_ruangan" < "Ruangan"."Kode_Ruang"
+
+Ref: "Jadwal"."Nama_Jadwal" < "Ruangan"."Nama_Ruang"
