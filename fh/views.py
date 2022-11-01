@@ -1,5 +1,10 @@
 from django.shortcuts import render
+
+from faperta.forms import FormDosen
 from . models import Dosen, Tenaga_Pendidik, Mahasiswa
+from fh.forms import FormMahasiswa
+from fh.forms import FormDosen
+from fh.forms import FormtenagaPendidik
 # Create your views here.
 def fh(request):
     dosen = Dosen.objects.all()
@@ -12,3 +17,24 @@ def fh(request):
         'dataMahasiswa': mahasiswa,
     }
     return render(request, 'indexfh.html', context)
+
+def tambah_mahasiswa(request):
+        form = FormMahasiswa()
+        context = {
+            'form': form,
+        }
+        return render(request, 'tambah-mahasiswa.html', context)
+
+def tambah_dosen(request):
+        form = FormDosen()
+        context = {
+            'form': form,
+        }
+        return render(request, 'tambah-dosen.html', context)
+
+def tambah_tendik(request):
+        form = FormtenagaPendidik()
+        context = {
+            'form': form,
+        }
+        return render(request, 'tambah-tendik.html', context)
